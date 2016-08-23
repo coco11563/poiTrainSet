@@ -2,7 +2,6 @@ package poiTrainSet;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobClient;
@@ -13,11 +12,12 @@ import org.apache.hadoop.mapred.TextOutputFormat;
 public class poiMainClass {
 	public static void main(String[] args) throws Exception {
 	    JobConf conf = new JobConf(poiMainClass.class);
-	    conf.setJobName("wordcount");
+	    conf.setJobName("poicount");
+	    
 
-	    conf.setOutputKeyClass(Text.class);
+	    conf.setOutputKeyClass(poiStatusIn.class);
 	    conf.setOutputValueClass(IntWritable.class);
-
+	    
 	    conf.setMapperClass(poiMapper.class);
 	    conf.setCombinerClass(poiReducer.class);
 	    conf.setReducerClass(poiReducer.class);
@@ -31,3 +31,4 @@ public class poiMainClass {
 	    JobClient.runJob(conf);
 	}
 }
+

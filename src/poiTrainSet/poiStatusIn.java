@@ -4,21 +4,34 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
 
 public class poiStatusIn implements WritableComparable<poiStatusIn>{
 	private Text poiid ;
 	private Text time;
+	private DoubleWritable lat;
+	private DoubleWritable lon;
 	/**
 	 * 
 	 * @param poiid
 	 * @param time
 	 */
-	public poiStatusIn(Text poiid, Text time)
+	public poiStatusIn(Text poiid, Text time,DoubleWritable lat , DoubleWritable lon)
 	{
 		this.setTime(time);
 		this.setPoiid(poiid);
+		this.setLat(lat);
+		this.setLon(lon);
+	}
+	public poiStatusIn()
+	{
+		this.setTime(new Text());
+		this.setPoiid(new Text());
+		this.setLat(new DoubleWritable());
+		this.setLon(new DoubleWritable());
 	}
 
 	 /** 
@@ -92,6 +105,20 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
 	public void setTime(Text time) {
 		this.time = time;
 	}
+	public DoubleWritable getLat() {
+		return lat;
+	}
+	public void setLat(DoubleWritable lat) {
+		this.lat = lat;
+	}
+	public DoubleWritable getLon() {
+		return lon;
+	}
+	public void setLon(DoubleWritable lon) {
+		this.lon = lon;
+	}
+	
+	
 
 
 }
