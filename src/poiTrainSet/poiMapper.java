@@ -45,6 +45,7 @@ Mapper<LongWritable, Text, poiStatusIn,IntWritable> {
 		poiStatusIn pois = new poiStatusIn(poiid , time , lat , lon ,type);
     output.collect(pois,one);	
 }
+	@SuppressWarnings("deprecation")
 	public String timeGet(String s){
 		SimpleDateFormat sdf = new SimpleDateFormat();
 		sdf.applyPattern("HH:mm:ss");

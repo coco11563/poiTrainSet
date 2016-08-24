@@ -5,7 +5,6 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
 
@@ -67,14 +66,14 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
     }  
     @Override  
     public int hashCode() {  
-        return poiid.hashCode()*419+time.hashCode() + lat.hashCode() + lon.hashCode()+ type.hashCode();  
+        return poiid.hashCode()*419+time.hashCode() + type.hashCode();  
     }  
     
     @Override  
     public boolean equals(Object o) {  
         if(o instanceof poiStatusIn){  
         	poiStatusIn pois=(poiStatusIn)o;  
-            return poiid.equals(pois.poiid) && time.equals(pois.time) &&lat.equals(pois.lat) &&lon.equals(pois.lon) &&type.equals(pois.type) ;  
+            return poiid.equals(pois.poiid) && time.equals(pois.time) &&type.equals(pois.type) ;  
         }  
         return false;  
     }  
