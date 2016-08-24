@@ -14,17 +14,19 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
 	private Text time;
 	private DoubleWritable lat;
 	private DoubleWritable lon;
+	private Text type;
 	/**
 	 * 
 	 * @param poiid
 	 * @param time
 	 */
-	public poiStatusIn(Text poiid, Text time,DoubleWritable lat , DoubleWritable lon)
+	public poiStatusIn(Text poiid, Text time,DoubleWritable lat , DoubleWritable lon , Text type)
 	{
 		this.setTime(time);
 		this.setPoiid(poiid);
 		this.setLat(lat);
 		this.setLon(lon);
+		this.setType(type);
 	}
 	public poiStatusIn()
 	{
@@ -32,6 +34,7 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
 		this.setPoiid(new Text());
 		this.setLat(new DoubleWritable());
 		this.setLon(new DoubleWritable());
+		this.setType(new Text());
 	}
 
 	 /** 
@@ -116,6 +119,12 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
 	}
 	public void setLon(DoubleWritable lon) {
 		this.lon = lon;
+	}
+	public Text getType() {
+		return type;
+	}
+	public void setType(Text type) {
+		this.type = type;
 	}
 	
 	
