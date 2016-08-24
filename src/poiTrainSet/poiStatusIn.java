@@ -44,8 +44,11 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
      */  
     @Override  
     public void write(DataOutput dataOutput) throws IOException { 
-    	poiid.write(dataOutput);
     	time.write(dataOutput);
+    	poiid.write(dataOutput);
+    	lat.write(dataOutput);
+    	lon.write(dataOutput);
+    	type.write(dataOutput);
     }  
     /** 
      * 同上调用成员对象本身的readFields方法，从输入流中反序列化每一个成员对象 
@@ -54,19 +57,24 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
      */  
     @Override  
     public void readFields(DataInput dataInput) throws IOException {  
-    	poiid.readFields(dataInput);  
     	time.readFields(dataInput);  
+    	poiid.readFields(dataInput);
+    	lat.readFields(dataInput);
+    	lon.readFields(dataInput);
+    	type.readFields(dataInput);
+    	
+    	
     }  
     @Override  
     public int hashCode() {  
-        return poiid.hashCode()*419+time.hashCode();  
+        return poiid.hashCode()*419+time.hashCode() + lat.hashCode() + lon.hashCode()+ type.hashCode();  
     }  
     
     @Override  
     public boolean equals(Object o) {  
         if(o instanceof poiStatusIn){  
         	poiStatusIn pois=(poiStatusIn)o;  
-            return poiid.equals(pois.poiid) && time.equals(pois.time);  
+            return poiid.equals(pois.poiid) && time.equals(pois.time) &&lat.equals(pois.lat) &&lon.equals(pois.lon) &&type.equals(pois.type) ;  
         }  
         return false;  
     }  
@@ -89,7 +97,7 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
      */   
     @Override  
     public String toString() {  
-        return time+"\t"+ poiid + "\t" + lat +"\t" + lon + "\t" + type;  
+        return time.toString()+"\t"+ poiid.toString() + "\t" + lat.get() +"\t" + lon.get() + "\t" + type.toString();  
     }  
    
 
