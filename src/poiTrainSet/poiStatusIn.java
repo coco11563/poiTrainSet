@@ -89,7 +89,7 @@ public class poiStatusIn implements WritableComparable<poiStatusIn>{
      */   
     @Override  
     public String toString() {  
-        return poiid+"\t"+time;  
+        return time+"\t"+ poiid + "\t" + lat +"\t" + lon + "\t" + type;  
     }  
    
 
