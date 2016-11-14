@@ -31,13 +31,8 @@ Mapper<LongWritable, Text, poiStatusIn,IntWritable> {
     OutputCollector<poiStatusIn,IntWritable> output, Reporter reporter)throws IOException {
 		IntWritable one = new IntWritable(1);
 		String line = value.toString();	
-		System.out.println(line);
 		String[] timePoiid = line.split(" ");
-		for(int i = 0 ; i < 4 ; i++)
-		{
-		System.out.println(timePoiid[i]);
-		}
-		time.set(timeGet(timePoiid[4]));
+		time.set(timePoiid[4]);
 		poiid.set(timePoiid[3]);
 		lat.set(Double.parseDouble(timePoiid[0]));
 		lon.set(Double.parseDouble(timePoiid[1]));
